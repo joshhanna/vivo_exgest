@@ -2,7 +2,6 @@ import rdflib
 import os
 from rdflib.plugins.stores import sparqlstore
 import simpleconfigparser
-import pprint
 import csv
 
 # method to read in files and call one by one
@@ -59,16 +58,15 @@ if __name__ == "__main__":
                     result_hash[key][column] = set()
 
                 #add data to set
-                if(row[column] is not None and type(row[column]) == rdflib.term.Literal):
+                if(row[column] is not None and type(row[column]) == rdflib.term.Literal and row[column].value is not None):
                     result_hash[key][column].add(row[column].value.strip())
                 elif(row[column] is not None and type(row[column]) == rdflib.term.URIRef):
                     result_hash[key][column].add(str(row[column]))
 
-    pprint.pprint(field_names)
 
     for i in result_hash:
         for j in result_hash[i]:
-            result_hash[i][j] = ", ".join(result_hash[i][j])
+            result_hash[i][j] = ", ".join(result_hash[i][j]).encode('ascii', 'ignore')
 
     #write out all the data into a csv file
     with open(cp.settings.output_file, 'w') as csvfile:
