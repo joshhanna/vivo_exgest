@@ -3,7 +3,7 @@ vivo_exgest
 
 Introduction
 -------------
-VIVO Exgest is a tool used to extract data from a [VIVO researcher networking system http://www.vivoweb.org/], using the SPARQL query language. The software is general purpose and can be extended by writing additional SPARQL queries. 
+VIVO Exgest is a tool used to extract data from a [VIVO researcher networking system](http://www.vivoweb.org/), using the SPARQL query language. The software is general purpose and can be extended by writing additional SPARQL queries. 
 
 Requirements
 -------------
